@@ -1,0 +1,22 @@
+.monthly-report-container {
+  height: calc(100dvh - 10.5rem); /* Ajusta según el diseño */
+  overflow: auto;
+}
+
+.mat-column-monthly_date {
+  width: 150px; /* ajusta según necesites */
+  min-width: 150px;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compact-icon-btn.mdc-icon-button {
+  --mdc-icon-button-state-layer-size: 28px;
+  --mdc-icon-button-icon-size: 18px;
+  transform: scale(0.65);
+  transform-origin: center;
+  padding: 0;
+  margin: 0;
+}

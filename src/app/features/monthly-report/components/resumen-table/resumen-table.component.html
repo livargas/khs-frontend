@@ -1,0 +1,86 @@
+<div class="relative overflow-x-auto">
+  <section class="monthly-report-container">
+    <table mat-table [dataSource]="dataSource" matSort fixedLayout="true" class="custom-table">
+      <!-- month Column -->
+      <ng-container matColumnDef="monthly_date" sticky>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 200px">Mes</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.monthly_date | date: 'MMMM yyyy' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="attendance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">Asistencia</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">
+          <div class="flex items-center justify-center gap-0">
+            <span>{{ row.attendance }}</span>
+            <button mat-icon-button class="compact-icon-btn" aria-label="Editar" routerLink="/monthly-reports/attendance/{{row.monthly_date}}">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="publisher">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">Activos</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">
+          <div class="flex items-center justify-center gap-0">
+            <span>{{ row.publisher }}</span>
+            <button mat-icon-button class="compact-icon-btn" aria-label="Editar" routerLink="/monthly-reports/field-service/{{row.monthly_date}}">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="publisher_reports">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">Publicadores</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">{{ row.publisher_reports }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="publisher_courses">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">CB. Pub.</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">{{ row.publisher_courses }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="auxiliary_reports">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">P. Aux.</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">{{ row.auxiliary_reports }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="auxiliary_hours">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">Hrs. Aux.</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">{{ row.auxiliary_hours }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="auxiliary_courses">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">CB. Aux.</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">{{ row.auxiliary_courses }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="regular_reports">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">P. Reg.</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">{{ row.regular_reports }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="regular_hours">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">Hrs. Reg.</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">{{ row.regular_hours }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="regular_courses">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">CB. Reg.</th>
+        <td mat-cell *matCellDef="let row" class="text-center!">{{ row.regular_courses }}</td>
+      </ng-container>
+      
+      <!-- inactive -->
+      <ng-container matColumnDef="inactive">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center!">Inactivos</th>
+        <td mat-cell *matCellDef="let row">{{ row.inactive }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns"></tr>     
+    </table>
+  </section>
+</div>

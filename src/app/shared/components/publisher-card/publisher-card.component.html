@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{publisher.firstname}} {{publisher.lastname}}</h2>
+<mat-dialog-content class="scrollable-content">
+  <table class="w-full text-left table-auto min-w-max">
+  <thead>
+    <tr>
+      <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">Mes</th>
+      <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">¿Participó?</th>
+      <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">P. Aux.</th>
+      <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">Hrs.</th>
+      <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">Notas</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (monthService of monthServices; track monthService) {
+      <tr class="hover:bg-blue-300">
+        <td class="p-4 border-b border-blue-gray-50">{{ monthService.month | date: 'y | MMMM' }}</td>
+        <td class="p-4 border-b border-blue-gray-50">
+          <input type="checkbox" [checked]="monthService.service?.participated" class="checkbox" disabled />
+        </td>
+        <td class="p-4 border-b border-blue-gray-50">
+          <input type="checkbox" [checked]="monthService.service?.serves_as === 'auxiliary'" class="checkbox" disabled />
+        </td>
+        <td class="p-4 border-b border-blue-gray-50">
+          {{ monthService.service?.hours }}
+        </td>
+        <td class="p-4 border-b border-blue-gray-50">
+          {{ monthService.service?.notes }}
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button matButton mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

@@ -1,0 +1,12 @@
+<div class="flex-col rounded-lg bg-background px-8 py-8 sm:flex-row">
+  <div class="mb-4 flex items-center justify-between">
+    <div class="flex-col items-center">
+      <h3 class="text-md font-bold text-foreground">Listado de Publicadores</h3>
+      <!-- <span class="text-xs text-muted-foreground">Updated 37 minutes ago</span> -->
+    </div>
+  </div>
+
+  @defer (when publishers) {
+    <app-publisher-table [publishers]="publishers"/>
+  }
+</div>

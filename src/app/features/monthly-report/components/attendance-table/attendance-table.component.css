@@ -1,0 +1,14 @@
+.attendance-container {
+  height: calc(100dvh - 10.5rem); /* Ajusta según el diseño */
+  overflow: auto;
+}
+
+.attendance-table {
+  /* Fila alternada */
+  
+  /* Hover sobre fila */
+  .mat-mdc-row:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    transition: background-color 0.2s ease;
+  }
+}

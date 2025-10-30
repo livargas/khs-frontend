@@ -1,0 +1,110 @@
+<div class="relative overflow-x-auto">
+  <div class="flex gap-4 mt-4 medium-form" [formGroup]="formFilter">
+    <mat-form-field appearance="outline">
+      <mat-label>Grupo</mat-label>
+      <mat-select formControlName="group" multiple>
+        @for (group of groups; track group) {
+          <mat-option [value]="group['id']">{{ group['name'] }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Privilegio</mat-label>
+      <mat-select formControlName="privileges" multiple>
+        @for (privilege of privileges; track privilege) {
+          <mat-option [value]="privilege['tag']">{{ privilege['name'] }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="flex-1">
+      <mat-label>Buscar</mat-label>
+      <input matInput formControlName="search" />
+    </mat-form-field>
+  </div>
+  <section class="field-service-container small-form" [formGroup]="form">
+    <table formArrayName="formFieldService" mat-table [dataSource]="dataSource" matSort class="custom-table">
+      <!-- Grupo -->
+      <ng-container matColumnDef="group_id">
+        <th mat-header-cell *matHeaderCellDef>Grupo</th>
+        <td mat-cell *matCellDef="let row">{{ row.group_id }}</td>
+      </ng-container>
+
+      <!-- Nombre Completo -->
+      <ng-container matColumnDef="fullname">
+        <th mat-header-cell *matHeaderCellDef class="grow">Nombre Completo</th>
+        <td mat-cell *matCellDef="let row" class="grow">{{ row.firstname }} {{ row.lastname }}</td>
+      </ng-container>
+
+      <!-- Participó -->
+      <ng-container matColumnDef="participated">
+        <th mat-header-cell *matHeaderCellDef>Participó</th>
+        <td mat-cell *matCellDef="let publisher; let i = index" [formGroup]="getFormGroupFor(publisher)">
+          <mat-checkbox formControlName="participated"></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Cursos bíblicos -->
+      <ng-container matColumnDef="courses">
+        <th mat-header-cell *matHeaderCellDef>C. Bíblicos</th>
+        <td mat-cell *matCellDef="let publisher; let i = index" [formGroup]="getFormGroupFor(publisher)">
+          <mat-form-field appearance="outline" class="w-15">
+            <input matInput type="number" formControlName="courses" class="text-center!" />
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <!-- Serves AS -->
+      <ng-container matColumnDef="serves_as">
+        <th mat-header-cell *matHeaderCellDef>¿Sirvió como?</th>
+        <td mat-cell *matCellDef="let publisher; let i = index" [formGroup]="getFormGroupFor(publisher)">
+          <mat-form-field appearance="outline" class="w-35">
+            <mat-select formControlName="serves_as">
+              <mat-option value="publisher">Publicador</mat-option>
+              <mat-option value="regular">Regular</mat-option>
+              <mat-option value="auxiliary">Auxiliar</mat-option>
+              <mat-option value="especial">Especial</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <!-- Horas -->
+      <ng-container matColumnDef="hours">
+        <th mat-header-cell *matHeaderCellDef>Horas</th>
+        <td mat-cell *matCellDef="let publisher; let i = index" [formGroup]="getFormGroupFor(publisher)">
+          <mat-form-field appearance="outline" class="w-15">
+            <input matInput type="number" formControlName="hours" class="text-center!" />
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <!-- Acreditadas -->
+      <ng-container matColumnDef="credited">
+        <th mat-header-cell *matHeaderCellDef>Crédito</th>
+        <td mat-cell *matCellDef="let publisher; let i = index" [formGroup]="getFormGroupFor(publisher)">
+          <mat-form-field appearance="outline" class="w-15">
+            <input matInput type="number" formControlName="credited" class="text-center!" />
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <!-- Notas -->
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef class="grow">Notas</th>
+        <td mat-cell *matCellDef="let publisher; let i = index" [formGroup]="getFormGroupFor(publisher)" class="grow">
+          <mat-form-field appearance="outline" class="w-full">
+            <input matInput formControlName="notes" placeholder="Notas..." />
+          </mat-form-field>
+        </td>
+
+        <td mat-cell *matCellDef="let publisher; let i = index" [formGroup]="getFormGroupFor(publisher)"></td
+      ></ng-container>
+
+      <!-- Render -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </section>
+</div>

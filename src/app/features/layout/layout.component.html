@@ -1,0 +1,27 @@
+<mat-sidenav-container class="h-dvh w-full" autosize>
+  <mat-sidenav mode="side" [opened]="true" [style.width.px]="250">
+    <div class="flex flex-col h-full justify-between">
+      <app-sidebar></app-sidebar>
+      <div class="flex flex-col gap-4">
+        
+        <p class="text-center text-xs text-muted font-semibold mb-2">@v1.0.0</p>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- <div class="flex h-screen w-full overflow-hidden">
+  <app-sidebar></app-sidebar>
+
+  <div class="flex grow flex-col content-start overflow-hidden bg-card">
+    <div
+      id="main-content"
+      class="scrollbar-thumb-rounded scrollbar-track-rounded grow overflow-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted">
+      <div class="p-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div> -->

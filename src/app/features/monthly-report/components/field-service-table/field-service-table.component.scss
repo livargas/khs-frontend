@@ -1,0 +1,9 @@
+.field-service-container {
+  height: calc(100dvh - 15.5rem); /* Ajusta según el diseño */
+  overflow: auto;
+  
+}
+
+.mat-column-notes {
+  flex: 1 1 auto;   // grow:1, shrink:1, basis:auto
+}
